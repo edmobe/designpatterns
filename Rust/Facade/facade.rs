@@ -36,9 +36,12 @@ impl PhoneFactoryFacade {
         println!("===========================================================");
         Tester::test_phones(amount_of_phones);
         println!("===========================================================");
+        Packager::request_boxes(amount_of_phones);
+        println!("-----------------------------------------------------------");
+        Packager::package_phones(amount_of_phones);
+        println!("===========================================================");
         Transport::transport_product();
         println!("===========================================================");
-
     }
 }
 
@@ -139,6 +142,24 @@ impl Tester {
             counter += 1;
         }
         println!("All phones tested successfully.");
+    }
+}
+
+struct Packager {}
+
+impl Packager {
+    fn request_boxes(amount: i64) {
+        println!("Requesting {} boxes to manufacturer...", amount);
+        println!("Boxes ready.");
+    }
+
+    fn package_phones(amount: i64) {
+        let mut counter = 1;
+        while (counter <= amount) {
+            println!("Packing phone {} of {}.", counter, amount);
+            counter += 1;
+        }
+        println!("All phones packaged successfully.");
         println!("All phones are ready for distribution.");
     }
 }
